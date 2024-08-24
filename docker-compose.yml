@@ -1,0 +1,7 @@
+version: "2"
+services:
+  udpxy:
+    image: fanmingming/udpxy-docker
+    container_name: UDPXY
+    network_mode: host
+    restart: always
