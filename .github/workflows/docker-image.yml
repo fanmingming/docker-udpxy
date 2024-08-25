@@ -24,12 +24,17 @@ jobs:
     
     # Step 3: Build the Docker image
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag udpxy:$(date +%s)
+      run: |
+        IMAGE_TAG=$(date +%s)
+        docker build . --file Dockerfile --tag udpxy:$IMAGE_TAG
     
     # Step 4: Tag the Docker image
-    - name: Tag the Docker image
-      run: docker tag udpxy:$(date +%s) ${{ secrets.DOCKER_USERNAME }}/udpxy:latest
+      run: |
+        IMAGE_TAG=$(date +%s)
+        docker tag udpxy:$IMAGE_TAG ${{ secrets.DOCKER_USERNAME }}/udpxy:latest
     
     # Step 5: Push the Docker image to Docker Hub
     - name: Push the Docker image to Docker Hub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/udpxy:latest
+      run: |
+        IMAGE_TAG=$(date +%s)
+        docker push ${{ secrets.DOCKER_USERNAME }}/udpxy:latest
