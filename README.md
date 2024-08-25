@@ -1,5 +1,5 @@
 # docker-udpxy
-## 在Docker部署使用udpxy服务
+## 通过Docker部署udpxy服务，支持amd64/arm64/armv7。
 
 ### docker-compose
 
