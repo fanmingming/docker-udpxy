@@ -1,5 +1,13 @@
 # docker-udpxy
-## 通过Docker部署udpxy服务，支持amd64/arm64/armv7。
+
+***一个极度轻量化的udpxy Docker镜像，支持amd64/arm64/armv7设备。***
+
+## An extremely lightweight udpxy image that supports amd64/arm64 and armv7 devices.
+
+![Docker Stars](https://img.shields.io/docker/stars/ifmm/udpxy)
+ ![Docker Image Size](https://img.shields.io/docker/image-size/ifmm/udpxy) ![Docker Pulls](https://img.shields.io/docker/pulls/ifmm/udpxy) ![Docker Image Version](https://img.shields.io/docker/v/ifmm/udpxy)
+
+---
 
 ### docker-compose
 
@@ -27,9 +35,9 @@ docker run -d \
 
 ## Web面版
 
-通过浏览器访问``ip_del_host:5893/status`` 查看运行状态
+- 访问``http://address:5893/status/`` 查看运行状态
 
-**注意**: 单播地址端口为`5893`
+- 访问``http://address:5893/restart/`` 重启udpxy服务
 
 ## 使用示例
 
