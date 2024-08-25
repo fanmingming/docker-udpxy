@@ -1,6 +1,6 @@
 # docker-udpxy
 
-***一个极度轻量化的udpxy Docker镜像，支持amd64/arm64/armv7设备。***
+***一个极度轻量化的udpxy Docker镜像，支持amd64/arm64和armv7设备。***
 
 ## An extremely lightweight udpxy image that supports amd64/arm64 and armv7 devices.
 
@@ -43,4 +43,4 @@ docker run -d \
 
 | 组播地址 | 单播地址 |
 | ------ | ------ |
-| `rtp://239.125.2.66:4120` | `http://ip_del_host:5893/rtp/239.125.2.66:4120` |
+| `rtp://239.125.2.66:4120` | `http://address:5893/rtp/239.125.2.66:4120` |
