@@ -11,10 +11,6 @@ RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1
     && tar zxf udpxy.tar.gz \
     && cd udpxy-* && cd chipmunk && make && make install
 
-# 删除不必要的文件和包
-RUN apk del make gcc libc-dev wget \
-    && rm -rf /tmp/udpxy*
-
 # Alpine v3
 FROM alpine:3.15
 LABEL maintainer="fanmingming"
