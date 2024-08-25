@@ -1,6 +1,6 @@
 # Alpine v3
 FROM alpine:latest as builder
-LABEL maintainer "Lordpedal"
+LABEL maintainer "ifmm"
 
 # 安装依赖
 RUN apk update && apk add make gcc libc-dev
@@ -13,7 +13,7 @@ RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1
 
 # Alpine v3
 FROM alpine:latest
-LABEL maintainer "Lordpedal"
+LABEL maintainer "ifmm"
 
 # Docker 启动
 COPY --from=builder /usr/local/bin/udpxy /usr/local/bin/udpxy
