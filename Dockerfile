@@ -1,5 +1,5 @@
 # Alpine v3
-FROM alpine:3.15 as builder
+FROM alpine:latest as builder
 LABEL maintainer="fanmingming"
 
 # 安装依赖
@@ -12,7 +12,7 @@ RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1
     && cd udpxy-* && cd chipmunk && make && make install
 
 # Alpine v3
-FROM alpine:3.15
+FROM alpine:latest
 LABEL maintainer="fanmingming"
 
 # Docker 启动
