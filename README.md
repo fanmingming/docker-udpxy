@@ -9,7 +9,7 @@ Compatible con los esquemas docker-compose v2.
 version: "2"
 services:
   udpxy:
-    image: fanmingming/docker-udpxy
+    image: ifmm/udpxy
     container_name: UDPXY
     network_mode: host
     restart: always
@@ -22,7 +22,7 @@ docker run -d \
         --name UDPXY \
         --network host \
         --restart always \
-        fanmingming/docker-udpxy
+        ifmm/udpxy
 ```
 
 ## Web面版
