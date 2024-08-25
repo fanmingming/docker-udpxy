@@ -9,7 +9,7 @@ RUN apk update && apk add --no-cache make gcc libc-dev wget
 WORKDIR /tmp
 RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.1.tar.gz \
     && tar zxf udpxy.tar.gz \
-    && cd udpxy-* && make && make install
+    && cd udpxy-* && cd chipmunk && make && make install
 
 # 删除不必要的文件和包
 RUN apk del make gcc libc-dev wget \
