@@ -2,6 +2,6 @@ version: "2"
 services:
   udpxy:
     image: ifmm/udpxy
-    container_name: UDPXY
+    container_name: udpxy
     network_mode: host
     restart: always
