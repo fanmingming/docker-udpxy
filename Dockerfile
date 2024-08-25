@@ -1,16 +1,23 @@
-FROM debian:12  as builder
-MAINTAINER fanmingming <mingming@live.com>
-ENV DEBIAN_FRONTEND noninteractive
+# Alpine v3
+FROM alpine:latest as builder
+LABEL maintainer="fanmingming"
 
+# 安装依赖
+RUN apk update && apk add --no-cache make gcc libc-dev wget
+
+# 编译 UDPXY
 WORKDIR /tmp
+RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.1.tar.gz \
+    && tar zxf udpxy.tar.gz \
+    && cd udpxy-* && cd chipmunk && make && make install
 
-RUN apt-get update && apt-get install -y wget make gcc git && \
-    git clone https://github.com/pcherenkov/udpxy.git . && \
-    cd chipmunk && make && make install
+# Alpine v3
+FROM alpine:latest
+LABEL maintainer="fanmingming"
 
+# Docker 启动
+COPY --from=builder /usr/local/bin/udpxy /usr/local/bin/udpxy
+COPY --from=builder /usr/local/bin/udpxrec /usr/local/bin/udpxrec
 
-FROM debian:12
-MAINTAINER fanmingming <mingming@live.com>
-COPY --from=builder /usr/local  /usr/local
-
-CMD ["/usr/local/bin/udpxy", "-T", "-p", "5893"]
+ENTRYPOINT ["/usr/local/bin/udpxy"]
+CMD ["-v", "-T", "-p", "5893"]
