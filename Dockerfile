@@ -1,6 +1,6 @@
 # Alpine v3
 FROM alpine:latest as builder
-LABEL maintainer "fanmingming"
+LABEL maintainer "ifmm"
 
 # 安装依赖
 RUN apk update && apk add --no-cache make gcc libc-dev
@@ -14,7 +14,7 @@ RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1
 
 # Alpine v3
 FROM alpine:latest
-LABEL maintainer "fanmingming"
+LABEL maintainer "ifmm"
 
 # Docker 启动
 COPY --from=builder /usr/local/bin/udpxy /usr/local/bin/udpxy
