@@ -1,13 +1,24 @@
+# Alpine v3
+FROM alpine:latest as builder
+LABEL maintainer "fanmingming"
+
+# 安装依赖
+RUN apk update && apk add --no-cache make gcc libc-dev
+
+# 编译 UDPXY
+WORKDIR /tmp
+RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.1.tar.gz \
+    && tar zxf udpxy.tar.gz \
+    && cd udpxy-* && make && make install \
+    && rm -rf /tmp/udpxy*  # 删除源码文件
+
+# Alpine v3
 FROM alpine:latest
+LABEL maintainer "fanmingming"
 
-# 安装 udpxy
-RUN apk update && apk add --no-cache udpxy
+# Docker 启动
+COPY --from=builder /usr/local/bin/udpxy /usr/local/bin/udpxy
+COPY --from=builder /usr/local/bin/udpxrec /usr/local/bin/udpxrec
 
-# 设置默认的工作目录
-WORKDIR /app
-
-# 暴露 udpxy 所需的端口（例如5893）
-EXPOSE 5893
-
-# 运行 udpxy 时的默认命令
-CMD ["udpxy", "-p", "5893"]
+ENTRYPOINT ["/usr/local/bin/udpxy"]
+CMD ["-v", "-T", "-p", "5893"]
