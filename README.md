@@ -10,7 +10,7 @@ version: "2"
 services:
   udpxy:
     image: ifmm/udpxy
-    container_name: UDPXY
+    container_name: udpxy
     network_mode: host
     restart: always
 ```
@@ -19,7 +19,7 @@ services:
 
 ```
 docker run -d \
-        --name UDPXY \
+        --name udpxy \
         --network host \
         --restart always \
         ifmm/udpxy
