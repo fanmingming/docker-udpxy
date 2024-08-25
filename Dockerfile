@@ -10,7 +10,7 @@ WORKDIR /tmp
 RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.1.tar.gz \
     && tar zxf udpxy.tar.gz \
     && cd udpxy-* && make && make install \
-    && rm -rf /tmp/udpxy*  # 删除源码文件
+    && rm -rf /tmp/udpxy-*  # 删除源码文件
 
 # Alpine v3
 FROM alpine:latest
