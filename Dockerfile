@@ -7,13 +7,13 @@ RUN apk update && apk add --no-cache make gcc libc-dev wget
 
 # 编译 UDPXY
 WORKDIR /tmp
-RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.1.tar.gz \
-    && tar zxf udpxy.tar.gz \
+RUN wget -O udpxy1.0-25.1.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.1.tar.gz \
+    && tar zxf udpxy1.0-25.1.tar.gz \
     && cd udpxy-* && make && make install
 
 # 删除不必要的文件和包
 RUN apk del make gcc libc-dev wget \
-    && rm -rf /tmp/udpxy-*
+    && rm -rf /tmp/udpxy*
 
 # Alpine v3
 FROM alpine:3.15
