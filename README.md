@@ -11,8 +11,6 @@
 
 ### docker-compose
 
-Compatible con los esquemas docker-compose v2.
-
 ```
 version: "2"
 services:
