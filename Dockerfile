@@ -1,5 +1,4 @@
 FROM alpine:latest as builder
-
 RUN apk update && apk add --no-cache make gcc libc-dev wget
 
 WORKDIR /tmp
@@ -10,7 +9,6 @@ RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1
 
 FROM alpine:latest
 LABEL org.opencontainers.image.authors="fanmingming"
-LABEL org.opencontainers.image.description="An extremely lightweight udpxy image."
 LABEL org.opencontainers.image.url="https://github.com/fanmingming/docker-udpxy"
 
 COPY --from=builder /usr/local/bin/udpxy /usr/local/bin/udpxy
