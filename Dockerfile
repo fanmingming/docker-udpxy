@@ -7,7 +7,7 @@ RUN apk update && apk add --no-cache make gcc libc-dev wget
 
 # 编译 UDPXY
 WORKDIR /tmp
-RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.1.tar.gz \
+RUN wget -O udpxy.tar.gz https://github.com/pcherenkov/udpxy/archive/refs/tags/1.0-25.2.tar.gz \
     && tar zxf udpxy.tar.gz \
     && cd udpxy-* && cd chipmunk && make && make install \
     && rm -rf /tmp/udpxy*  # 删除源码文件
